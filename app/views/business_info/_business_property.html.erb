@@ -1,0 +1,29 @@
+<div class="tab-pane fade <%= "show active" if active %>" id="business-property" role="tabpanel" aria-labelledby="business-property-tab">
+  <%= simple_form_for @business_info do |f| %>
+      <div class="row">
+        <div class="col-12 mb-3">
+          <%= f.input :is_home_based, as: :boolean, class: 'form-control input-area', label: "Home Based?" %>
+          <%= f.error :is_home_based, class: 'invalid-feedback' %>
+        </div>
+        <div class="col-12 mb-3 display-flex">
+          Owned
+          <%= f.input :is_rented, as: :boolean, class: 'form-control input-area', label: "Rented", input_html: { class: 'form-check-input', role: 'switch' }, wrapper_html: { class: 'form-check form-switch' } %>
+          <%= f.error :is_rented, class: 'invalid-feedback' %>
+        </div>
+        <div class="col-12 mb-3">
+          <%= f.input :open_fo_bankruptcy, as: :boolean, class: 'form-control input-area', label: "Open Bankruptcy?", placeholder: 'Open For Bankruptcy*', :input_html => { :data => {"business-target" => "open_fo_bankruptcy", "action" => "business#on_bankruptcy_select"}} %>
+          <%= f.error :open_fo_bankruptcy, class: 'invalid-feedback' %>
+        </div>
+        <div id="bankruptcy-reason-div" class="col-12 mb-3 hide">
+          <%= f.input :bankruptcy_reason, class: 'form-control input-area', id: 'bankruptcy_reason', label: "Bankruptcy Reason", placeholder: 'Bankruptcy Reason*' %>
+          <%= f.error :bankruptcy_reason, class: 'invalid-feedback' %>
+        </div>
+
+        <%= f.input_field :step, as: :hidden, value: BusinessInfo::STEPS[3] %>
+
+        <div class="col-12 text-right">
+          <%= f.submit 'Next', class: 'btn btn-primary' %>
+        </div>
+      </div>
+  <% end %>
+</div>

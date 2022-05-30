@@ -1,0 +1,14 @@
+$theme-colors: (
+  "primary": #2c2f79,
+);
+@import 'bootstrap/scss/bootstrap';
+@import 'tel_plugin/intl_tel_input';
+@import 'home';
+@import 'about';
+@import 'product';
+@import 'faqs';
+@import 'personal_info';
+@import 'contact_us';
+@import 'blogdetail';
+@import 'blogfeed';
+@import 'tel_plugin/intl_tel_input.scss';

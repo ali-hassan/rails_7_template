@@ -1,0 +1,38 @@
+<div class="tab-pane fade <%= "show active" if active %>" id="business-account" role="tabpanel" aria-labelledby="business-account-tab">
+  <%= simple_form_for business_info, validate: true do |f| %>
+    <div class="row">
+      <div class="col-12 mb-3">
+        <%= f.input :ein, class: 'form-control input-area', id: 'ein', label: "EIN", placeholder: 'Federal Tax ID/EIN Number*' %>
+        <%= f.error :ein, class: 'invalid-feedback' %>
+      </div>
+      <div class="col-12 mb-3">
+        <%= f.input :type_of_entity, as: :select, collection: BusinessInfo::TYPE_OF_ENTITY, class: 'form-control input-area', id: 'type_of_entity', label: "Type of entity", placeholder: 'Type of entity*' %>
+        <%= f.error :type_of_entity, class: 'invalid-feedback' %>
+      </div>
+
+      <div class="col-12 mb-3" data-controller="revenue" >
+        <%= f.input :ownership_id, class: 'form-control input-area', label: "% of Ownership*", input_html: { class: 'display-none' } %>
+        <%= business_info.decorate.build_revenue_selector :ownership, business_info.ownership_id %>
+        <%= f.error :ownership_id, class: 'invalid-feedback' %>
+      </div>
+
+      <div class="col-12 mb-3" data-controller="revenue" >
+        <%= f.input :monthly_revenue_id, class: 'form-control input-area', label: "Monthly Revenue", input_html: { class: 'display-none' } %>
+        <%= business_info.decorate.build_revenue_selector :monthly_revenue, business_info.monthly_revenue_id %>
+        <%= f.error :monthly_revenue_id, class: 'invalid-feedback' %>
+      </div>
+
+      <div class="col-12 mb-3" data-controller="revenue" >
+        <%= f.input :estimated_credit_score_id, class: 'form-control input-area', label: "Estimated Credit Score*", input_html: { class: 'display-none' } %>
+        <%= business_info.decorate.build_revenue_selector :estimated_credit_score, business_info.estimated_credit_score_id %>
+        <%= f.error :estimated_credit_score_id, class: 'invalid-feedback' %>
+      </div>      
+
+      <%= f.input_field :step, as: :hidden, value: BusinessInfo::STEPS[2] %>
+
+      <div class="col-12 text-right">
+        <%= f.submit "Next", class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+</div>

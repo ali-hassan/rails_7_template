@@ -1,0 +1,30 @@
+<div class="tab-pane fade <%= "show active" if active %>" id="cash-advance" role="tabpanel" aria-labelledby="cash-advance-tab">
+  <%= simple_form_for funding_info do |f| %>
+
+    <div class="row" data-controller = "cocoon" >
+      <div class="col-12 mb-3">
+        <%= f.input :is_cash_adv, as: :boolean, class: 'form-control input-area', label: "Current Loans or Advances?", :input_html => { :data => {"cocoon-target" => "is_cash_adv", "action" => "cocoon#on_cash_advance_select"}} %>
+        <%= f.error :is_cash_adv, class: 'invalid-feedback' %>
+      </div>
+
+      <div id="credit_infos" class=" <%= "hide" unless funding_info.is_cash_adv %>">
+        <%= f.simple_fields_for :credit_infos, funding_info.credit_infos do |credit_info_f| %>
+          <%= render partial: "funding_info/credit_info_fields", locals: { f: credit_info_f} %>
+        <% end %>
+        <%= f.simple_fields_for :credit_infos, funding_info.credit_infos.new do |credit_info_f| %>
+          <%= render partial: "funding_info/credit_info_fields", locals: { f: credit_info_f} %>
+        <% end %>
+        <div class="links">
+          <%= link_to_add_association 'Add New Lender', f, :credit_infos, partial: 'funding_info/credit_info_fields', class: "btn btn-seamless-yellow mt-4" %>
+        </div>
+      </div>
+      
+
+      <%= f.input_field :step, as: :hidden, value: FundingInfo::STEPS[2] %>
+
+      <div class="col-12 text-right">
+        <%= f.submit 'Next', class: 'btn btn-primary' %>
+      </div>
+    </div>
+  <% end %>
+</div>

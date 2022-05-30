@@ -1,0 +1,94 @@
+<%= turbo_frame_tag "upload_documents_form" do %>
+  <%= simple_form_for user, url: upload_documents_path, method: :post, validate: true, :html => { :class => 'row row-cols-lg-auto g-3 width-480 align-items-center needs-validation' } do |f| %>
+    <input name='form_type' type='hidden' value='form' >
+    <%= f.input_field :step, as: :hidden, value: User::STEPS[0] %>
+    <div class="row padding-mob">
+      <div class="card text-center">
+        <div class="card-body">
+          <p>Unable to access/upload your banking statements at this time? No worries! You can complete your application and always add your statements later on at a time that is more convenient.</p>
+        </div>
+      </div>
+
+<!--       <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading">New Application</h4>
+        <p>Unable to access/upload your banking statements at this time? No worries! You can complete your application and always add your statements later on at a time that is more convenient.</p>
+        <hr>
+        <hr>
+      </div> -->
+      <div class="col-sm-12 col-lg-8 mx-auto">
+        <br>
+        <label><%= third_last_month %> - Business Bank Statement</label>
+        <%= f.file_field :third_bank_statement, class: 'form-control m-input', id: 'third_bank_statement' %>
+        <%= f.error :first_name, class: 'invalid-feedback' %>
+        <span class="remove_doc_section remove_third_statement">
+          <% if user.third_bank_statement.attached? %>
+            <%= link_to remove_third_bank_statement_upload_document_path(user), :data => {turbo_method: :delete, turbo_confirm: 'Are you sure?'} do %>
+              <%= image_tag("remove.png", alt:"remove", :class => "remove_doc") %><a href="<%= polymorphic_url(user.third_bank_statement) %>" target="_blank"><%= user.third_bank_statement.blob[:filename] %></a>
+            <% end %>
+          <% end %>
+        </span>
+        <br>
+        <br>
+      </div>
+      <div class="col-sm-12 col-lg-8 mx-auto">
+        <label><%= second_last_month %> - Business Bank Statement</label>
+        <%= f.file_field :second_bank_statement, class: 'form-control m-input', id: 'second_bank_statement' %>
+        <%= f.error :first_name, class: 'invalid-feedback' %>
+        <span class="remove_doc_section remove_second_statement">
+          <% if user.second_bank_statement.attached? %>
+            <%= link_to remove_second_bank_statement_upload_document_path(user), :data => {turbo_method: :delete, turbo_confirm: 'Are you sure?'} do %>
+              <%= image_tag("remove.png", alt:"remove", :class => "remove_doc") %><a href="<%= polymorphic_url(user.second_bank_statement) %>" target="_blank"><%= user.second_bank_statement.blob[:filename] %></a>
+            <% end %>
+          <% end %>
+        </span>
+        <br>
+        <br>
+      </div>
+
+      <div class="col-sm-12 col-lg-8 mx-auto">
+        <label><%= last_month %> - Business Bank Statement</label>
+        <%= f.file_field :first_bank_statement, class: 'form-control m-input', id: 'first_bank_statement' %>
+        <%= f.error :first_name, class: 'invalid-feedback' %>
+        <span class="remove_doc_section remove_second_statement">
+          <% if user.first_bank_statement.attached? %>
+            <%= link_to remove_first_bank_statement_upload_document_path(user), :data => {turbo_method: :delete, turbo_confirm: 'Are you sure?'} do %>
+              <%= image_tag("remove.png", alt:"remove", :class => "remove_doc") %><a href="<%= polymorphic_url(user.first_bank_statement) %>" target="_blank"><%= user.first_bank_statement.blob[:filename] %></a>
+            <% end %>
+          <% end %>
+        </span>
+        <br>
+        <br>
+      </div>
+
+      <div class="card bg-primary text-white text-center">
+        <div class="card-body">
+          FOR SEAMLESS SPLIT PRODUCT UPLOAD THE PROCESSING STATEMENTS
+        </div>
+      </div>
+
+      <div class="col-sm-12 col-lg-8 mx-auto">
+        <br>
+        <%= f.file_field :processing_statement, class: 'form-control m-input', id: 'processing_statement' %>
+        <%= f.error :first_name, class: 'invalid-feedback' %>
+        <span class="remove_doc_section remove_second_statement">
+          <% if user.processing_statement.attached? %>
+            <%= link_to remove_processing_statement_upload_document_path(user), :data => {turbo_method: :delete, turbo_confirm: 'Are you sure?'} do %>
+              <%= image_tag("remove.png", alt:"remove", :class => "remove_doc") %><a href="<%= polymorphic_url(user.processing_statement) %>" target="_blank"><%= user.processing_statement.blob[:filename] %></a>
+            <% end %>
+          <% end %>
+        </span>
+        <br>
+        <br>
+      </div>
+
+      <div class="card text-center">
+        <div class="card-body">
+          <p>Please make sure to upload full business bank statements to ensure your funding application gets processed without any delay. Unfortunately, we are unable to process application with screenshots or incomplete bank statements.</p>
+        </div>
+      </div>
+      <div class="col-12 text-right mt-4">
+        <%= f.submit 'Next', class: 'btn btn-primary' %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

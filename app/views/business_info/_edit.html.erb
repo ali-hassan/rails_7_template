@@ -1,0 +1,29 @@
+<%= turbo_frame_tag "collection_info_section" do %>
+  <section class="info-tabs" data-controller="business" >
+    <div class="container" data-controller="common" >
+      <div class="tabs-inner">
+        <ul class="nav nav-tabs" id="business-info-tab" role="tablist">         
+          <li class="nav-item <%= "disabled" unless business_info.step_enabled? "business_personal" %>" role="presentation">
+            <button class="nav-link <%= "active" if business_info.step == "business_personal" %>" id="business-personal-tab" data-bs-toggle="tab" data-bs-target="#business-personal" type="button" role="tab" aria-controls="business-personal" aria-selected="true"> BUSINESS DETAILS
+            </button>
+          </li>
+
+          <li id="b-account-li" class="nav-item <%= "disabled" unless business_info.step_enabled? "business_accounts" %>" role="presentation">
+            <button class="nav-link <%= "active" if business_info.step == "business_accounts" %>" id="business-account-tab" data-bs-toggle="tab" data-bs-target="#business-account" type="button" role="tab" aria-controls="business-account" aria-selected="false"> ACCOUNTS DETAILS
+            </button>
+          </li>
+
+          <li id="b-property-li" class="nav-item <%= "disabled" unless business_info.step_enabled? "business_property" %>" role="presentation">
+            <button class="nav-link <%= "active" if business_info.step == "business_property" %>" id="business-property-tab" data-bs-toggle="tab" data-bs-target="#business-property" type="button" role="tab" aria-controls="business-property" aria-selected="false"> PROPERTY DETAILS
+            </button>
+          </li>
+        </ul>
+      </div>
+      <div class="tab-content" id="business-info-tabContent">
+        <% BusinessInfo::STEPS.each do |step| %>
+          <%= render partial: "business_info/#{step}", locals: { business_info: @business_info, active: business_info.decorate.mark_active_step(step) } unless step == 'funding_info' %>
+        <% end %>
+      </div>
+    </div>
+  </section>
+<% end %>

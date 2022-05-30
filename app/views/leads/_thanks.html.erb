@@ -1,0 +1,13 @@
+<% if @lead.is_qualified? %>
+  <h4 data-controller="redirect" data-redirect-url-value="<%= new_personal_info_path(lead_id: @lead.id) %>" >
+    Thank you! 
+  </h4>
+<% end %>
+<% if @lead.is_forward? %>
+  <h4>
+    Thank you, Redirecting to you one of our partner. 
+  </h4>
+<% end %>
+<% if @lead.is_contact? %>
+  <h4>Thank You! We will be intouch soon.</h4>
+<% end %>

@@ -1,0 +1,6 @@
+<% if @user.errors.blank? %>
+  <%= turbo_stream.update("flash", partial: 'shared/flash', locals: { msg_type: :notice, message: "User finalized Successfully." }) %>
+  <%= turbo_stream.replace("finalize_form", partial: "finalize/form", locals: { user: @user })  %>
+<% else %>
+  <%= turbo_stream.replace("finalize_form", partial: "finalize/form", locals: { user: @user })  %>
+<% end %>

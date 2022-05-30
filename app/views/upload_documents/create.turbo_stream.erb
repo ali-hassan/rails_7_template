@@ -1,0 +1,7 @@
+<% if @user.errors.blank? %>
+  <%= turbo_stream.update("flash", partial: 'shared/flash', locals: { msg_type: :notice, message: "Documents uploaded successfully." }) %>
+  <%= turbo_stream.replace("header_form", partial: "shared/step_header", locals: { progress: 80, title: 'Finalize', step_no: 5 })  %>
+  <%= turbo_stream.replace("collection_info_section", partial: "finalize/index", locals: { user: @user })  %>
+<% else %>
+  <%= turbo_stream.replace("collection_info_section", partial: "upload_documents/new", locals: { user: @user })  %>
+<% end %>

@@ -1,0 +1,176 @@
+<%= render 'shared/header_all_pages'%>
+
+<section class="banner-area-faqs">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="main-div text-center">
+            <div class="headline">
+              <h1>FAQs</h1>
+              <h1 class="color-green">SEAMLESS CAPITAL ACCESS</h1>
+            </div>
+            <h3>See below for answers to our frequently asked questions.</h3>
+
+            <button type="submit" class="btn btn-yellow color-purple">
+              <a href="#">APPLY TODAY</a>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="getStarted-area-faqs">
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 order-one">
+      <div class="img-div">
+        <%= image_tag("getstarted.png", alt:"getstarted" , :class => "getstarted-image") %>
+      </div>
+    </div>
+    <div class="col-md-8 left-div order-two">
+      <h1 class="h1-common">WHAT YOU'LL NEED TO GET STARTED</h1>
+      <div class="row mb-90 justify-content-center">
+          <div class="col-md-3">
+            <div class="text-center">
+              <%= image_tag("account.PNG", alt:"account", :class => "funding-image") %>
+              <div class="text-inner">Business Checking Bank Account</div>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="text-center">
+              <%= image_tag("calender.PNG", alt:"calender", :class => "funding-image") %>
+              <div class="text-inner">6+ months in business</div>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="text-center">
+              <%= image_tag("revenue.PNG", alt:"revenue", :class => "funding-image") %>
+              <div class="text-inner">
+                $5k minimum monthly business revenue/$100k annual
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="text-center">
+              <%= image_tag("score.PNG", alt:"score", :class => "funding-image") %>
+              <div class="text-inner">500+ Credit Score</div>
+            </div>
+          </div>
+        </div>
+  </div>
+    </div>
+   
+</div>
+</section>
+
+<section class="faqs-area">
+<div class="container">
+  <div class="row">
+  <% @faq.each_with_index do |faq, index|%>
+    <div class="accordion" id="accordionExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="<%= 'heading'+ index.to_s %>">
+        <button class="accordion-button <%= index > 0 ? 'collapsed' : '' %>" type="button" data-bs-toggle="collapse" data-bs-target="#<%= 'collapse'+ index.to_s %>" aria-expanded="true" aria-controls=" <%= 'collapse'+ index.to_s %>">    
+        <p class="p-common question-text m-0">
+        <%=faq.question%>
+      </p>
+        </button>
+      </h2>
+      <div id="<%= 'collapse'+ index.to_s %>" class="accordion-collapse collapse <%= index == 0 ? 'show' : '' %> " aria-labelledby="<%= 'heading'+ index.to_s %>" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+        <div class="color-purple answer-text">
+        <%=faq.answer.html_safe%>
+      </div>
+        </div>
+      </div>
+    </div>
+  <%end%>  
+</div>
+  </div>
+</div>
+</section>
+<section class="information-area-product mt-1">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            <div class="text-wrap">
+              <h1 class="h1-common mb-2">More Questions?</h1>
+              <p class="p-common mb-0">Let our Funding Concierge reach out.</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="right-div">
+              <form
+                class="row row-cols-lg-auto g-3 width-480 align-items-center needs-validation"
+                novalidate
+              >
+                <div class="col-6 col-margin">
+                  <input
+                    type="text"
+                    class="form-control input-area"
+                    id="firstNameInfo"
+                    placeholder="First Name*"
+                    required
+                  />
+                  <div class="invalid-feedback">can't be blank</div>
+                </div>
+
+                <div class="col-6 col-margin">
+                  <input
+                    type="text"
+                    class="form-control input-area"
+                    id="lastNameInfo"
+                    placeholder="Last Name*"
+                    required
+                  />
+                  <div class="invalid-feedback">can't be blank</div>
+                </div>
+
+                <div class="col-6 col-margin">
+                  <input
+                    type="text"
+                    class="form-control input-area"
+                    id="companyInfo"
+                    placeholder="Company*"
+                    required
+                  />
+                  <div class="invalid-feedback">can't be blank</div>
+                </div>
+
+                <div class="col-6 col-margin">
+                  <input
+                    type="text"
+                    class="form-control input-area"
+                    id="phoneInfo"
+                    placeholder="Phone Number*"
+                    required
+                  />
+                  <div class="invalid-feedback">can't be blank</div>
+                </div>
+
+                <div class="col-12 col-margin">
+                  <input
+                    type="text"
+                    class="form-control input-area"
+                    id="emailInfo"
+                    placeholder="Email*"
+                    required
+                  />
+                  <div class="invalid-feedback">can't be blank</div>
+                </div>
+                <div class="col-12">
+                  <button type="submit" class="btn btn-yellow color-purple">
+                    <a href="#">GET IN TOUCH</a>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+<%= render 'shared/footer_section' %>

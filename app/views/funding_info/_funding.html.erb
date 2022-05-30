@@ -1,0 +1,31 @@
+<div class="tab-pane fade <%= "show active" if active %>" id="funding-general" role="tabpanel" aria-labelledby="funding-general-tab">
+  <%= simple_form_for funding_info do |f| %>
+    <div class="row">
+      <div class="col-12 mb-3" data-controller="revenue" >
+        <%= f.input :request_amount_id, class: 'form-control input-area', label: "Requested Amount*", input_html: { class: 'display-none' } %>
+        <%= funding_info.decorate.build_revenue_selector :requested_amount, funding_info.request_amount_id %>
+        <%= f.error :request_amount_id, class: 'invalid-feedback' %>
+      </div>
+
+      <div class="col-12 mb-3">
+        <%= f.input :purpose_id, as: :select, collection: Purpose.order(sort_order: :asc).pluck(:title, :id) , class: 'form-control input-area', id: 'purpose', label: "Purpose", placeholder: 'purpose*' %>
+        <%= f.error :purpose_id, class: 'invalid-feedback' %>
+      </div>
+
+      <div class="col-12 mb-3">
+        <%= f.input :accept_card, as: :boolean, class: 'form-control input-area', label: "Do you accept Credit Cards?", placeholder: 'Accept Card*', :input_html => { :data => {"funding-target" => "accept_card", "action" => "funding#on_card_select"}} %>
+        <%= f.error :accept_card, class: 'invalid-feedback' %>
+      </div>
+      <div id="card-info-div" class="col-12 mb-3 hide">
+        <%= f.input :estimated_monthly_cc_sales_id, class: 'form-control input-area', id: 'estimated_monthly_cc_sales_id', :label => "Estimated Monthly CC Sales Id", placeholder: 'Estimated Monthly CC Sales Id*' %>
+        <%= f.error :estimated_monthly_cc_sales_id, class: 'invalid-feedback' %>
+      </div>
+
+      <%= f.input_field :step, as: :hidden, value: FundingInfo::STEPS[1] %>
+
+      <div class="col-12 text-right">
+        <%= f.submit 'Next', class: 'btn btn-primary' %>
+      </div>
+    </div>
+  <% end %>
+</div>

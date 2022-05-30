@@ -1,0 +1,50 @@
+<section class="header-all-pages">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <a class="navbar-brand" href="/"
+            >
+            <%= image_tag("logosvg.svg", alt:"logo",:class => "logo") %></a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarTogglerDemo01"
+            aria-controls="navbarTogglerDemo01"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+             <%= link_to "Products", products_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+             <%= link_to "About", about_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+             <%= link_to "FAQs", faqs_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+             <a class="nav-link" href="#">News</a>
+          </li>
+       </ul>
+            <div class="header-actions">
+              <div class="flex-coloumn">
+                <div class="actionLinks">
+                  <%= link_to "Contact", contact_us_path, class: "btn btn-simple" %>
+                  <button class="btn btn-simple" type="submit">Login</button>
+                </div>
+                <div>
+                  <button class="btn btn-yellow" type="submit">
+                    <a href="#">APPLY TODAY</a>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </section>

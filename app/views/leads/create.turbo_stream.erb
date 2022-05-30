@@ -1,0 +1,6 @@
+<% if @lead.errors.blank? %>
+  <%= turbo_stream.update("flash", partial: 'shared/flash', locals: { msg_type: :notice, message: "Redirecting to you application." }) %> 
+  <%= turbo_stream.replace("lead_#{params[:form_type]}", partial: 'leads/thanks', locals: { lead: @lead }) %> 
+<% else %>
+  <%= turbo_stream.replace("lead_#{params[:form_type]}", partial: "leads/#{params[:form_type]}", locals: { lead: @lead })  %>
+<% end %>

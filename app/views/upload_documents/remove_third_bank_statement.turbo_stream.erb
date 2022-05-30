@@ -1,0 +1,6 @@
+<% if @user.errors.blank? %>
+  <%= turbo_stream.append("flash", partial: 'shared/flash', locals: { msg_type: :notice, message: "Document removed successfully." }) %>
+  <%= turbo_stream.replace("upload_documents_form", partial: "upload_documents/form", locals: { user: @user })  %>
+<% else %>
+  <%= turbo_stream.replace("upload_documents_form", partial: "upload_documents/form", locals: { user: @user })  %>
+<% end %>

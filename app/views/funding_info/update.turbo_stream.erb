@@ -1,0 +1,8 @@
+<% if @funding_info.is_upload_docs? && @funding_info.errors.blank?%>
+  <%= turbo_stream.update("flash", partial: 'shared/flash', locals: { msg_type: :notice, message: "Funding info successfully saved." }) %> 
+  <%= turbo_stream.replace("header_form", partial: "shared/step_header", locals: { progress: 60, title: 'Upload Documents', step_no: 4 })  %>
+  <%= turbo_stream.replace("collection_info_section", partial: "upload_documents/new", locals: { user: current_user })  %>
+<% else %>
+  <%= turbo_stream.update("flash", partial: 'shared/flash', locals: { msg_type: :notice, message: "Funding info successfully saved." }) if @funding_info.errors.blank? %> 
+  <%= turbo_stream.replace("collection_info_section", partial: "funding_info/forms", locals: { user: current_user, funding_info: @funding_info })  %>
+<% end %>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <script>
+    window.initMap = function(...args){
+      const event = document.createEvent("Events")
+      event.initEvent("google-maps-callback", true, true)
+      event.args = args
+      window.dispatchEvent(event)
+    }
+  </script>
+  <head>
+    <title>SeamlessCapital</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap");
+    </style>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <script src="https://www.google.com/maps/api/js?key=AIzaSyAQrU66qV9EG9pK15TPq0GurI92STFCWeY&callback=initMap&libraries=places" async defer data-turbolinks-evals="false" ></script>
+  </head>
+  <body>
+    <turbo-frame id="flash">
+      <% flash.each do |type, message| %>
+        <%= render 'shared/flash', locals: { msg_type: type, message: message } %>
+      <% end %>
+    </turbo-frame>
+    <%= yield %>
+  </body>
+</html>

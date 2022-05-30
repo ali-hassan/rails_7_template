@@ -1,0 +1,32 @@
+<%= turbo_frame_tag "lead_footer_form" do %>
+  <%= simple_form_for lead, :html => { class: 'row row-cols-lg-auto g-3 width-480 align-items-center needs-validation', id: 'lead_footer_form' } do |f| %>
+      <input name='form_type' type='hidden' value='footer_form' >
+    <div class="col-6 col-margin">
+      <%= f.input_field :first_name, class: 'form-control input-area',placeholder: 'First Name*' %> 
+      <%= f.error :first_name, class:'invalid-feedback' %>
+    </div>
+
+    <div class="col-6 col-margin">
+      <%= f.input_field :last_name, class: 'form-control input-area', placeholder:'Last Name*' %> 
+      <%= f.error :last_name, class: 'invalid-feedback' %>
+    </div>
+
+    <div class="col-6 col-margin">
+      <%= f.input_field :company, class: 'form-control input-area', placeholder: 'Company*' %> 
+      <%= f.error :company, class: 'invalid-feedback' %>
+    </div>
+
+    <div class="col-6 col-margin">
+      <%= f.input_field :phone, class: 'form-control input-area', placeholder: 'Phone Number*' %> 
+      <%= f.error :phone, class: 'invalid-feedback' %>
+    </div>
+
+    <div class="col-12 col-margin">
+      <%= f.input_field :email, class: 'form-control input-area', placeholder: 'Email*' %> 
+      <%= f.error :email, class: 'invalid-feedback' %>
+    </div>
+    <div class="col-12">
+      <%= f.submit 'GET IN TOUCH', class: 'btn btn-yellow color-purple' %>
+    </div>
+  <% end %>
+<% end %>

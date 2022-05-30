@@ -1,0 +1,26 @@
+<%= turbo_frame_tag "collection_info_section" do %>
+  <section class="info-tabs">
+    <div class="container">
+      <div class="tabs-inner">
+        <ul class="nav nav-tabs" id="funding-info-tab" role="tablist">
+
+          <li class="nav-item <%= "disabled" unless funding_info.step_enabled? "funding" %>" role="presentation">
+            <button class="nav-link <%= "active" if funding_info.step == "funding" %>" id="funding-general-tab" data-bs-toggle="tab" data-bs-target="#funding-general" type="button" role="tab" aria-controls="funding-general" aria-selected="true"> FUNDING DETAILS
+            </button>
+          </li>
+
+          <li class="nav-item<%= "disabled" unless funding_info.step_enabled? "cash_advance" %>" role="presentation">
+            <button class="nav-link <%= "active" if funding_info.step == "cash_advance" %>" id="cash-advance-tab" data-bs-toggle="tab" data-bs-target="#cash-advance" type="button" role="tab" aria-controls="funding-general" aria-selected="true"> CREDIT DETAILS
+            </button>
+          </li>
+
+        </ul>
+      </div>
+      <div class="tab-content" id="funding-info-tabContent" data-controller='funding' >
+        <% FundingInfo::STEPS.each do |step| %>
+          <%= render partial: "funding_info/#{step}", locals: { funding_info: funding_info, active: funding_info.decorate.mark_active_step(step) } unless step == 'upload_docs' %>
+        <% end %>        
+      </div>
+    </div>
+  </section>
+<% end %>

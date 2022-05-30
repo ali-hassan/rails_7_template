@@ -1,0 +1,12 @@
+<% unless @business_info.is_funding_info? %>
+  <%= turbo_stream.update("flash", partial: 'shared/flash', locals: { msg_type: :notice, message: "Business info successfully saved." }) if @business_info.errors.blank? %>
+  <%= turbo_stream.replace("collection_info_section", partial: "business_info/edit", locals: { business_info: @business_info })  %>
+<% else %>
+  <%= turbo_stream.update("flash", partial: 'shared/flash', locals: { msg_type: :notice, message: "Business info successfully saved." }) if @business_info.errors.blank? %>
+  <%= turbo_stream.replace("header_form", partial: 'shared/step_header', locals: { progress: 40, title: 'Funding Info', step_no: 3 }) if @business_info.errors.blank? %>
+  <%= turbo_stream.replace("collection_info_section", partial: "business_info/edit", locals: { business_info: @business_info })  %>
+  <%= turbo_stream.replace("collection_info_section", partial: 'funding_info/forms', locals: { funding_info: current_user.funding_info }) if @business_info.errors.blank? %>
+<% end %>
+
+<%#= turbo_stream.replace("header_form", partial: "shared/step_header", locals: { progress: 40, title: 'Funding Info', step_no: 3 })  %>
+

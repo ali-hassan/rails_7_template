@@ -1,0 +1,527 @@
+  <section class="header-area" data-controller="home">
+    <nav class="navbar navbar-expand-lg navbar-light" data-controller="common" >
+      <div class="container">
+        <a class="navbar-brand" href="/"
+          >
+          <%= image_tag("logosvg.svg", alt:"logo",:class => "logo") %>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarTogglerDemo01"
+          aria-controls="navbarTogglerDemo01"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <%= link_to "Products", products_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+              <%= link_to "About", about_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+              <%= link_to "FAQs", faqs_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#">News</a>
+          </li>
+          </ul>
+          <div class="header-actions">
+            <div class="flex-coloumn">
+              <div class="actionLinks">
+                <%= link_to "Contact", contact_us_path, class: "btn btn-simple" %>
+                <button class="btn btn-simple" type="submit">Login</button>
+              </div>
+              <div>
+                <button class="btn btn-yellow" type="submit">
+                  <a href="#">APPLY TODAY</a>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </section>
+  <section class="application-area" id="applicationDiv">
+    <div class="container">
+      <div class="row justify-content-center align-items-center">
+        <div class="col-md-6">
+          <div class="left-div">
+            <div class="headline">
+              <h1>ONE APPLICATION.</h1>
+              <h1 class="color-green">TOTAL CONTROL.</h1>
+            </div>
+            <h3>
+              Apply once and receive multiple cash advance offers in as little
+              as 1 hour.
+            </h3>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="right-div">
+            <!-- <span class="title">See if you qualify</span> -->
+            <span class="title">Want more information? </span>
+            <span class="form-span">
+              <%= render partial: 'leads/form', locals: { lead: @lead } %>
+            </span>
+
+            <h2>Thank you! We will be intouch soon.</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="appcontrol-area" data-aos="fade-up">
+    <div class="container">
+      <div class="row justify-content-center text-center">
+        <div class="col-md-12">
+          <h1 class="h1-common">One application. total control.</h1>
+          <p class="p-common">
+            Seamless Capital Access gives you the power of a modern business
+            funding platform with the convenience of one application shared
+            with a network of preferred funding partners. No more time
+            consuming meetings with brokers, or pushy “sales calls,” just
+            instant matching with funding sources. Simply complete our online
+            application and let your funding concierge go to work.
+          </p>
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-md-3">
+          <div class="app-offer">
+            <span>1</span>
+            <div class="text-inner apply-div">
+              <%= image_tag("apply.svg", alt:"apply") %>
+              <div class="heading">APPLY</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="app-offer review-div">
+            <span>2</span>
+            <div class="text-inner review-div">
+              <%= image_tag("review.svg", alt:"review") %>
+              <div class="heading">REVIEW & CUSTOMIZE YOUR OFFERS</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="app-offer">
+            <span>3</span>
+            <div class="text-inner funded-div">
+              <%= image_tag("funded.svg", alt:"funded") %>
+              <div class="heading">
+                <div>Get</div>
+                <strong class="color-yellow">FUNDED</strong>
+              </div>
+              <%= image_tag("checkmark.svg", alt:"checkmark", :class => "logo") %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="row">
+        <div class="col-md-12">
+          <div class="app-offer">
+            <img
+              src="./assets/images/fund-steps.svg"
+              alt="steps"
+              class="steps-web"
+            />
+
+            <img
+              src="./assets/images/fund-steps-mob.svg"
+              alt="steps-mob"
+              class="steps-mob"
+            />
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </section>
+
+
+  <section class="experience-area-home bg-offwhite" data-aos="fade-up">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6 left-div order-two">
+          <h2 class="h2-common color-purple mb-0">
+            Your Dedicated Specialized Funding Concierge Stays With You Every
+            Step of the Process
+          </h2>
+        </div>
+        <div class="col-md-2 order-one">
+          <div class="right-div">
+            <%= image_tag("courtny.png", alt:"courtny") %>
+            <div class="person-info">
+              <span>Courtney H.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="guarantee-area" data-aos="fade-up">
+    <div class="container">
+      <div class="row justify-content-center text-center">
+        <div class="col-md-12">
+        <!-- <h2 class="h2-common color-yellow mb-19">
+        WE TRULY CARE. THEY DON'T!
+      </h2> -->
+          <h1 class="h1-common">OUR SEAMLESS GUARANTEE</h1>
+        </div>
+      </div>
+
+      <div class="row mt-4">
+        <div class="col-sm-12 col-lg-3">
+          <div class="flex-items">
+            <%= image_tag("funds.svg", alt:"funds") %>
+            <div>
+              <h2 class="h2-common color-purple">Zero</h2>
+              <span>Origination Fees</span>
+              <div class="inner-text">
+                Receive 100% of your
+        approved funds
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-3">
+          <div class="flex-items">
+            <%= image_tag("fees.svg", alt:"fees") %>
+            <div>
+              <h2 class="h2-common color-purple">Zero</h2>
+              <span>Processing Fees</span>
+              <div class="inner-text">
+                Completely eliminate your
+                credit card processing fees if you opt to switch to our credit
+                card processing platform
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-3">
+          <div class="flex-items">
+            <%= image_tag("credit.svg", alt:"credit") %>
+            <div>
+              <h2 class="h2-common color-purple">Zero</h2>
+              <span>Hassles</span>
+              <div class="inner-text">
+                No hard credit pull or pushy
+        salesperson
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-3">
+          <div class="flex-items">
+            <%= image_tag("calls.svg", alt:"call") %>
+            <div>
+              <h2 class="h2-common color-purple">Zero</h2>
+              <span>Balance Promise</span>
+              <div class="inner-text">
+                Every month we will randomly
+        zero out the balance of one of our Seamless accounts
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="row">
+        <div class="col">
+          <ul class="list-items">
+            <li>
+              <span>Zero Origination Fees: </span>Receive 100% of your
+              approved funds
+            </li>
+            <li>
+              <span>Zero Processing Fees: </span> Completely eliminate your
+              credit card processing fees if you opt to switch to our credit
+              card processing platform
+            </li>
+            <li>
+              <span>Zero Hassles: </span>No hard credit pull or pushy
+              salesperson
+            </li>
+            <li>
+              <span>Zero Balance Promise: </span>Every month we will randomly
+              zero out the balance of one of our Seamless accounts
+            </li>
+          </ul>
+        </div>
+      </div> -->
+    </div>
+  </section>
+
+  <section class="business-area-home bg-offwhite">
+    <div class="container">
+      <div class="row justify-content-center text-center" data-aos="fade-up">
+        <div class="col-md-12">
+          <h1 class="h1-common">FLEXIBLE SMALL BUSINESS CAPITAL</h1>
+          <p class="p-common height-100 font-size-18">
+            Flexible funding offerings with one convenient application. Choose
+            the amount, terms and type of funding you need.
+          </p>
+        </div>
+      </div>
+
+      <div class="row mb-90 justify-content-center" data-aos="fade-left">
+        <div class="col-md-1"></div>
+        <div class="col-md-5">
+          <div class="flex-items">
+            <%= image_tag("product/ach.png", alt:"ach", :class => "product-image") %>
+            <div class="head-inner">
+              SEAMLESS
+              <span class="color-green"> ACH</span>
+              <div>Daily, weekly and bi-weekly payment options.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-5">
+          <div class="flex-items">
+            <%= image_tag("product/split.png", alt:"split",:class => "product-image") %>
+            <div class="head-inner">
+              SEAMLESS
+              <span class="color-yellow"> SPLIT</span>
+              <div>
+                A fluctuating payment oDaily, weekly and bi-weption that varies with your credit card
+                sales.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mb-90 justify-content-center" data-aos="fade-right">
+        <div class="col-md-1"></div>
+        <div class="col-md-5">
+          <div class="flex-items">
+            <%= image_tag("product/express.png", alt:"express",:class => "product-image") %>
+            <div class="head-inner">
+              SEAMLESS
+              <span class="color-orange"> EXPRESS</span>
+              <div>
+                Express offers with same day funding requiring minimal
+                supporting documentation.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-5">
+          <div class="flex-items">
+            <%= image_tag("product/zero.png", alt:"zero",:class => "product-image") %>
+            <div class="head-inner">
+              SEAMLESS
+              <span class="color-purple"> ZERO</span>
+              <div>Zeroing out your credit card processing fees.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="funding-area" data-aos="fade-up">
+    <div class="container">
+      <div class="row justify-content-center text-center" data-aos="fade-up">
+        <div class="col-md-12">
+          <h1 class="h1-common">BASIC FUNDING REQUIREMENT</h1>
+        </div>
+      </div>
+
+      <div class="row mb-90 justify-content-center">
+        <div class="col-md-3">
+          <div class="text-center">
+            <%= image_tag("account.PNG", alt:"account",:class => "funding-image") %>
+            <div class="text-inner">Business Checking Bank Account</div>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="text-center">
+            <%= image_tag("calender.PNG", alt:"calender",:class => "funding-image") %>
+            <div class="text-inner">6+ months in business</div>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="text-center">
+            <%= image_tag("revenue.PNG", alt:"revenue",:class => "funding-image") %>
+            <div class="text-inner">
+              $5k minimum monthly business revenue/$100k annual
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="text-center">
+            <%= image_tag("score.PNG", alt:"score",:class => "funding-image") %>
+            <div class="text-inner">500+ Credit Score</div>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="h2-common">
+        Additionally, if you take credit cards we may be able to eliminate
+        your processing fees.
+      </h2>
+    </div>
+  </section>
+
+  <section class="feedback-area-home">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-lg-5">
+          <h1 class="h1-common text-white">
+            WHAT OUR CUSTOMERS LOVE ABOUT SEAMLESS
+          </h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 text-white">
+          <%= image_tag("quote.png", alt:"quote") %>
+          <p class="fst-italic">
+            Seamless truly goes above and beyond for you!!! From beginning to
+            end I truly felt like my hand was being held, all questions
+            answered before having to ask. My funding concierge checks back in
+            with me regularly to make sure all is going well and I have my
+            bases covered. I highly recommend as a resource to help expand
+            your business. I can't stress enough how “seamless” the process
+            was …
+          </p>
+          <p class="color-purple name-text ps-2">
+            -Tony K. Pinehill Trucking, NC
+          </p>
+        </div>
+        <div class="col-md-4 text-white">
+          <%= image_tag("quote.png", alt:"quote") %>
+          <p class="fst-italic">
+            I've been funded now three times with Seamless Capital Access and
+            each time the experience is quick, easy, and painless. Purchasing
+            inventory and equipment as a business owner is essential, and
+            having a company in my back pocket that feels like they'll really
+            go to bat for you is exceptional and feels unlike any service in
+            the industry I've ever come across.
+          </p>
+          <p class="color-purple name-text ps-2">
+            -Claudia W. Laser Direct Salons, FL
+          </p>
+        </div>
+        <div class="col-md-4 text-white">
+          <%= image_tag("quote.png", alt:"quote") %>
+          <p class="fst-italic">
+            Amazing experience!! After constantly receiving offers from other
+            lenders promising me everything, seamless delivered the funds that
+            I needed to build my business, and provided it with exceptional
+            terms and service. In addition to the funding I received, the
+            seamless ZERO allowed me to eliminate my processing fees, and the
+            Funding Concierge was outstanding to work with, always making
+            himself available and explaining the products in great detail.
+          </p>
+          <p class="color-purple name-text ps-2">
+            -Mark M. Best thing BBQ, TX
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="information-area">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <div class="text-wrap">
+            <h1 class="h1-common mb-2">More Questions?</h1>
+            <p class="p-common mb-0">Let our Funding Concierge reach out.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="right-div">
+            <form
+              class="row row-cols-lg-auto g-3 width-480 align-items-center needs-validation"
+              novalidate
+            >
+              <div class="col-6 col-margin">
+                <input
+                  type="text"
+                  class="form-control input-area"
+                  id="firstNameInfo"
+                  placeholder="First Name*"
+                  required
+                />
+                <div class="invalid-feedback">can't be blank</div>
+              </div>
+
+              <div class="col-6 col-margin">
+                <input
+                  type="text"
+                  class="form-control input-area"
+                  id="lastNameInfo"
+                  placeholder="Last Name*"
+                  required
+                />
+                <div class="invalid-feedback">can't be blank</div>
+              </div>
+
+              <div class="col-6 col-margin">
+                <input
+                  type="text"
+                  class="form-control input-area"
+                  id="companyInfo"
+                  placeholder="Company*"
+                  required
+                />
+                <div class="invalid-feedback">can't be blank</div>
+              </div>
+
+              <div class="col-6 col-margin">
+                <input
+                  type="text"
+                  class="form-control input-area"
+                  id="phoneInfo"
+                  placeholder="Phone Number*"
+                  required
+                />
+                <div class="invalid-feedback">can't be blank</div>
+              </div>
+
+              <div class="col-12 col-margin">
+                <input
+                  type="text"
+                  class="form-control input-area"
+                  id="emailInfo"
+                  placeholder="Email*"
+                  required
+                />
+                <div class="invalid-feedback">can't be blank</div>
+              </div>
+              <div class="col-12">
+                <button type="submit" class="btn btn-yellow color-purple">
+                  GET IN TOUCH
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <%= render 'shared/footer_section' %>

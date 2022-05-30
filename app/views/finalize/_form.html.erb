@@ -1,0 +1,43 @@
+<%= turbo_frame_tag "finalize_form" do %>
+  <%= simple_form_for user, url: finalize_index_path, method: :post, validate: true, :html => { :class => 'row row-cols-lg-auto g-3 align-items-center justify-content-center needs-validation' } do |f| %>
+    <input name='form_type' type='hidden' value='form' >
+    <div class="row">
+      <div class="col-sm-12 mx-auto">
+        <br>
+        <%= f.input :social_security_number, class: 'form-control m-input', id: 'social_security_number' %>
+        <%= f.error :social_security_number, class: 'invalid-feedback' %>
+        <br>
+      </div>
+      <div class="col-sm-12 mx-auto">
+        <!-- <label>Birthday</label> -->
+        <%#= f.file_field :birth_date, class: 'form-control m-input', id: 'birth_date', default: Time.parse('9:00') %>
+        <%= f.date_field :dob, class: 'form-control m-input', id: 'birth_date' %>
+        <%= f.error :birth_date, class: 'invalid-feedback' %>
+        <br>
+      </div>
+      <div class="col-sm-12 mx-auto">
+        <%= f.input :phone, class: 'form-control input-area', id: 'phone', placeholder: 'Phone*' %>
+        <%= f.error :phone, class: 'invalid-feedback' %>
+        <br>
+      </div>
+      <div class="col-sm-12 mx-auto">
+        <%= f.input :verification_code, class: 'form-control m-input', id: 'verification_code' %>
+        <%= f.error :verification_code, class: 'invalid-feedback' %>
+        Don't receive the code?
+        <%= link_to resend_verification_code_finalize_index_path, :data => {turbo_method: :post} do %>
+          <span class="resend_link">Resend</span>
+        <% end %>
+        <br>
+        <br>
+      </div>
+      <div class="col-sm-12 mx-auto">
+        <%= f.input :terms_and_conditions, class: 'form-control m-input', id: 'terms_and_conditions' %>
+        <%= f.error :terms_and_conditions, class: 'invalid-feedback' %>
+        <br>
+      </div>
+      <div class="col-12 text-right">
+        <%= f.submit 'Next', class: 'btn btn-primary' %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

@@ -1,0 +1,51 @@
+<%= turbo_frame_tag "header_form" do %>
+  <section class="header-customer-info">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"
+          >
+        <%= image_tag("logosvg.svg", alt:"logo",:class => "logo") %>
+        </a>
+      </div>
+    </nav>
+    <div class="progress-text">
+      Progress: <%= progress %>%
+
+      <!-- <span><i class="fas fa-info"></i></span> -->
+    </div>
+  </section>
+
+  <!-- Steps progress bar in % value -->
+
+  <div class="progress" style="height: 4px">
+    <div
+      class="progress-bar"
+      role="progressbar"
+      style="width: <%= progress %>%"
+      aria-valuenow="25"
+      aria-valuemin="0"
+      aria-valuemax="100"
+    ></div>
+  </div>
+
+  <!-- Steps progress bar in % value -->
+
+  <div class="main-steps-web-nav">
+    <ul>
+      <% ["Personal Info", "Business Info", "Funding Info", "Upload Documents", "Finalize"].each do |step_title| %>
+        <li <%= (step_title == title) ? 'class="active"' : '' %>>
+          <button><%= step_title %></button>
+        </li>
+      <% end %>
+    </ul>
+    <!-- <div class="profile-progress-mob">0%</div> -->
+  </div>
+
+  <!--  Profile Main Nav Mob -->
+  <div class="main-steps-mob-nav">
+    <div>
+      <h1><%= title %></h1>
+      <div class="steps-count">Step <%= step_no %>/5</div>
+    </div>
+  </div>
+<% end %>

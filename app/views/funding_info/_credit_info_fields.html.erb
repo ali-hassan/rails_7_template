@@ -1,0 +1,14 @@
+<div class="nested-fields">
+  <div class="col-12 mb-3">
+    <%= f.input :lender_name, class: 'form-control input-area', :label => "Lender Name", placeholder: 'Lender Name*' %>
+    <%= f.error :lender_name, class: 'invalid-feedback' %>
+  </div>
+  <div class="col-12 mb-3" data-controller="revenue">
+    <%= f.input :balance_amount_id, class: 'form-control input-area', label: "Estimated Balance Amount", placeholder: 'Estimated Balance Amount*', input_html: { class: 'display-none' } %>
+    <%= f.object.decorate.build_revenue_selector :balance_amount, f.object.balance_amount_id %>
+    <%= f.error :balance_amount_id, class: 'invalid-feedback' %>
+  </div>
+  <div class="text-right">
+    <%= link_to_remove_association "remove", f, class: "btn btn-danger" %>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+<div class="tab-pane fade <%= "show active" if active %>" id="business-personal" role="tabpanel" aria-labelledby="business-personal-tab">
+  <%= simple_form_for @business_info, validate: true do |f| %>
+      <div class='row'>
+        <div class="col-12 mb-3">
+          <%= f.input :legal_name, class: 'form-control input-area', id: 'legal_name', placeholder: 'Legal Name*' %>
+          <%= f.error :legal_name, class: 'invalid-feedback' %>
+        </div>    
+      </div>
+
+      <div class='row'>
+        <div class="col-12 mb-3">
+          <% dba_active = @business_info.is_different_dba %>
+          <%= f.input :is_different_dba, as: :boolean, class: 'form-control input-area', :label => "Different DBA?", :input_html => { :checked => dba_active, :data => {"business-target" => "is_different_dba", "action" => "business#on_dba_select"}} %>
+          <%= f.error :is_different_dba, class: 'invalid-feedback' %>
+        </div>    
+      </div>
+
+      <div class='row'>
+        <div id="dba-div" class="col-12 mb-3 <%= "hide" unless dba_active %>">
+          <%= f.input :dba, class: 'form-control input-area', id: 'dba', :label => "DBA", placeholder: 'DBA*' %>
+          <%= f.error :dba, class: 'invalid-feedback' %>
+        </div>    
+      </div>
+
+      <div class='row'>
+        <div class="col-12 mb-3">
+          <%= f.input :email, class: 'form-control input-area', id: 'email', placeholder: 'Email*', label: 'Business Email' %>
+          <%= f.error :email, class: 'invalid-feedback' %>
+        </div>    
+      </div>
+
+      <div class='row'>
+        <div class="col-12 mb-3">
+          <%= f.input :phone, class: 'form-control input-area', id: 'phone', placeholder: 'Phone*', label: 'Business Phone' %>
+          <%= f.error :phone, class: 'invalid-feedback' %>
+        </div>    
+      </div>
+
+      <div class='row'>
+        <div class="col-12 mb-3">
+          <%= f.input :address, class: 'form-control input-area', id: 'address', placeholder: 'Address*', label: 'Business Address', :input_html => { :data => {"business-target" => "address"}} %>
+          <%= f.error :address, class: 'invalid-feedback' %>
+        </div>    
+      </div>
+
+      <%= f.input_field :step, as: :hidden, value: BusinessInfo::STEPS[1] %>
+
+      <div class="col-12 text-right">
+        <%= f.submit "Next", class: 'btn btn-primary' %>
+      </div>
+  <% end %>
+</div>  

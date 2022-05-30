@@ -1,0 +1,46 @@
+<%= turbo_frame_tag "personal_info_form" do %>
+  <%= simple_form_for user, url: personal_info_index_path , validate: true, :html => { class: ' needs-validation' } do |f| %>
+    <input name='form_type' type='hidden' value='form' >
+    <div class="row">
+      <div class="col-6 mb-3">
+        <%= f.input :first_name, class: 'form-control input-area only-string-allowed', id: 'first_name', placeholder: 'First Name*' %>
+        <%= f.error :first_name, class: 'invalid-feedback' %>
+      </div>
+      <div class="col-6 mb-3">
+        <%= f.input :last_name, class: 'form-control input-area', id:'last_name' , placeholder: 'Last Name*' %>
+        <%= f.error :last_name, class: 'invalid-feedback' %>
+      </div>
+
+      <div class="col-md-6 col-sm-12 mb-3">
+        <%= f.input :phone, class: 'form-control input-area', id: 'phone_no' , placeholder: 'Phone Number*' %>
+        <%= f.error :phone, class: 'invalid-feedback' %>
+      </div>
+
+      <div class="col-md-6 col-sm-12 mb-3">
+        <%= f.input :email, class: 'form-control input-area', placeholder: 'Email*' %>
+        <%= f.error :email, class: 'invalid-feedback' %>
+      </div>
+
+      <div class="col-md-6 col-sm-12 mb-3">
+        <%= f.input :address, class: 'form-control input-area', placeholder: 'Address*', :input_html => { :data => {"personal-target" => "address"}} %>
+        <%= f.error :address, class: 'invalid-feedback' %>
+      </div>
+
+      <div class="col-md-4 col-sm-12 mb-3">
+        <%= f.input :password, class: 'form-control input-area', placeholder: 'Password *' %>
+        <%= f.error :password, class: 'invalid-feedback' %>
+      </div>
+
+      <div class="col-md-2 col-sm-12 mb-3">
+        <label></label>
+        <%= f.input :is_us_citizen, class: 'form-control input-area', label: "US Citizen?" %>
+        <%= f.error :is_us_citizen, class: 'invalid-feedback' %>
+      </div>
+
+      <div class="col-12 text-right">
+        <%= f.submit 'Next', class: 'btn btn-primary' %>
+      </div>
+    </div>
+  <% end %>
+
+<% end %>
